@@ -1,21 +1,23 @@
 const form = document.querySelector('.login-form');
 
+const result = {};
 
 form.addEventListener('submit', onCheckFormValid)
 
 function onCheckFormValid(event) {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    
-    if (formData.get('password') === '' || formData.get('email') === '') {
-        alert('Всі поля повинні бути заповнені')
-    };
-    console.log(formData);
-    console.log(formData.set(values, name));
-    
-    formData.forEach((values, name) => {
-        const dataFormResult = {values, name}
-        return console.log(dataFormResult)
-    })
-    ;
+  event.preventDefault();
+  const formEl = event.currentTarget;
+
+  let email = formEl.elements.namedItem('email').value;
+  let password = formEl.elements.namedItem('password').value;
+
+  if (email === '' || password === '') {
+    alert('Всі поля повинні бути заповнені')
+    event.currentTarget.reset();
+  } else {
+    result['email'] = email;
+    result['password'] = password;
+  }
+event.currentTarget.reset();
+console.log(result);
 }
