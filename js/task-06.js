@@ -3,11 +3,11 @@ const input = document.querySelector('#validation-input');
 input.addEventListener('input', onInputValid);
 
 function onInputValid (event) {
-    const lengthValue = event.currentTarget.value.length;
-    const maxLengthValue = Number(event.currentTarget.dataset.length);
+    const inputLengthValue = event.currentTarget.value.length;
+    const requiredLengthValue = Number(event.currentTarget.getAttribute('data-length'));
 
     input.addEventListener('blur', () => {
-        if (lengthValue >= maxLengthValue) {
+        if (inputLengthValue === requiredLengthValue) {
             input.classList.remove('invalid') 
             input.classList.add('valid') 
         } else {
